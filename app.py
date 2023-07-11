@@ -3,7 +3,6 @@ from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 import os
 import sys 
-import click
 from wallpaperextend import *
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import Flask, render_template, redirect, url_for, flash,request
@@ -80,42 +79,81 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Login')
 
 
+# @app.route('/register', methods=['GET', 'POST'])
+# def register():
 
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    form = RegistrationForm()
-    if form.validate_on_submit():
-        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = User(username=form.username.data, password=hashed_password)
-        db.session.add(user)
-        db.session.commit()
-        flash('Your account has been created! You are now able to log in', 'success')
-        return redirect(url_for('login'))
-    return render_template('register.html', title='Register', form=form)
+#     form = RegistrationForm()
+#     print(form.passwd.data)
 
-@app.route('/home')
-def home():
-    return render_template('home.html')
+#     if form.validate_on_submit():
+#         print('ssss')
+#         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+#         user = User(username=form.username.data, password=hashed_password)
+#         db.session.add(user)
+#         db.session.commit()
+#         flash('Your account has been created! You are now able to log in', 'success')
+#         return redirect(url_for('login'))
+#     return render_template('login.html', title='Register', form=form)
+
+# @app.route('/home')
+# def home():
+#     return render_template('home.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
-        if user and bcrypt.check_password_hash(user.password, form.password.data):
-            login_user(user)
-            next_page = request.args.get('next')
-            return redirect(next_page) if next_page else redirect(url_for('home'))
-        else:
-            flash('Login Unsuccessful. Please check your username and password', 'danger')
-    return render_template('login.html', title='Login', form=form)
+    print("shabi")
+    if request.method == 'POST':
+        form_name = request.form.get('name')
+        print(form_name)
+        if form_name == 'login':
+            form = LoginForm(request.form)
+            print('333333')
+            print(form.validate_on_submit())
+            print(form.errors)
+            if form.validate_on_submit():
+                user = User.query.filter_by(username=form.username.data).first()
+                print("sdsfs")
+                if user and bcrypt.check_password_hash(user.password, form.password.data):
+                    login_user(user)
+                    next_page = request.args.get('next')
+                    return redirect(next_page) if next_page else redirect(url_for('mypaper',username = form.username.data))
+                else:
+                    flash('Login Unsuccessful. Please check your username and password', 'danger')
+            return render_template('login.html', title='Login', form=form)
+                # process login form data
+        elif form_name == 'register':
+            print('jjjjjjjbbbb')
+            form = RegistrationForm(request.form)
+            print(form.username)
+            print(form.validate_on_submit())
+            print(form.errors)
+            if form.validate_on_submit():
+                print('ssss')
+                hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+                user = User(username=form.username.data, password=hashed_password)
+                db.session.add(user)
+                db.session.commit()
+                flash('Your account has been created! You are now able to log in', 'success')
+                return redirect(url_for('mypaper',username = form.username.data))
+            return redirect(url_for('login'))
+    else:
+        login_form = LoginForm()
+        registration_form = RegistrationForm()
+        return render_template('login.html', login_form=login_form, registration_form=registration_form)
+    # form = LoginForm()
+    # print("chaoba")
+    # print(form.username.data)
+    # print(form.password.data)
+    # print(form.validate_on_submit())
+    # if form.validate_on_submit():
+
 
 
 @app.route('/logout')
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('home'))
+    return redirect(url_for('index'))
 
 
 class WallPaper(db.Model):  # 表名将会是 wallpaper
@@ -178,8 +216,11 @@ def upload_file():
         location = request.form['location']
         theme = request.form['theme']
         # print(savepath)
-        filepath = os.path.join('./static/images', f.filename)
+        filepath = os.path.join(app.root_path,'static/images', f.filename)
         f.save(filepath)
+        print("11111")
+        print(f.filename)
+        print(filepath)
         print(username)
         wallpaper = WallPaper(name=f.filename.split('.')[0], uploader = username,location = location , theme = theme)
         db.session.add(wallpaper)
@@ -187,6 +228,7 @@ def upload_file():
 
         return redirect(request.referrer) 
     else:
+        print('22222222')
         return render_template('upload.html')
 
 
@@ -241,5 +283,5 @@ def search():
 if __name__ == '__main__':
     # app.run(debug=True)
     # app.run()
-
-    app.run(host='0.0.0.0', port='6677', debug=True)
+    # app.run(host='::', port=5000) 
+    app.run(host='::', port='6677', debug=True)

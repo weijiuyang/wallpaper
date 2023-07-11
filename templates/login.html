@@ -1,35 +1,87 @@
+
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title>Login</title>
-  </head>
-  <body>
-    <h1>Login</h1>
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        {% for message in messages %}
-          <div>{{ message }}</div>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
-    <form method="post">
-      {{ form.csrf_token }}
-      <p>
-        {{ form.username.label }}<br>
-        {{ form.username(size=50) }}<br>
-        {% for error in form.username.errors %}
-          <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-      </p>
-      <p>
-        {{ form.password.label }}<br>
-        {{ form.password(size=50) }}<br>
-        {% for error in form.password.errors %}
-          <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-      </p>
-      <p>{{ form.submit }}</p>
-    </form>
-  </body>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入css、js -->
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'login.css') }}">
+    <script src="{{ url_for('static', filename = 'js/login.js') }}"></script>
+</head>
+<body>
+    <!-- 搭建结构 -->
+    <div class="container switch">
+        <!-- 注册页面 -->
+        <div class="container-form container-signup">
+            <form action="" class="form" method="post">
+                <h2 class="form-title">Sign Up</h2>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div>{{ message }}</div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                {{ registration_form.csrf_token }}
+                {{ registration_form.username(class='input',placeholder="Username") }}
+                {% for error in registration_form.username.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+                {{ registration_form.password(class='input',placeholder="Password")}}<br>
+                {% for error in registration_form.password.errors %}
+                  <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+                {{ registration_form.confirm_password(class='input',placeholder="confirm_password")}}<br>
+                {% for error in registration_form.confirm_password.errors %}
+                  <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+                <input type="hidden" name="name" value= "register">
+
+                {{ registration_form.submit(class = 'submit') }}
+            </form>
+        </div>
+        <!-- 登录页面 -->
+        <div class="container-form container-signin">
+            <form class="form" method="post">
+                <h2 class="form-title">Sign In</h2>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div>{{ message }}</div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                {{ login_form.csrf_token }}
+
+                {{ login_form.username(class='input',placeholder="Username") }}
+                {% for error in login_form.username.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+                {{ login_form.password(class='input',placeholder="Password")}}<br>
+                {% for error in login_form.password.errors %}
+                  <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+                <input type="hidden" name="name" value= "login">
+
+                {{ login_form.submit(class = 'submit') }}
+
+            </form>
+        </div>
+        <!-- 覆盖层 -->
+        <div class="container-overlay">
+            <div class="overlay">
+                <div class="overlay-slide overlay-left">
+                    <button class="submit" id="goSignIn">sign in</button>
+                </div>
+                <div class="overlay-slide overlay-right">
+                    <button class="submit" id="goSignUp">sign up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 </html>
+<!-- 结构搭建完成 -->
+
