@@ -1,0 +1,178 @@
+/*
+Theme Name: SHOOTEST v4
+Author: 株式会社Yuinchu
+Description: SHOOTEST v4
+*/ 
+@charset "UTF-8";
+/*---------------------------
+Reset
+----------------------------*/
+html,body{width: 100%;}
+html {font-size:62.5%;}
+body,div,p,ul,ol,li,table,tr,th,td,article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,address {font-size:13px; font-size:1.3rem;}
+span,a {font-size:1em;}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+border: 0;
+font-family:'Roboto' , "游ゴシック" , "Yu Gothic" , "游ゴシック体" , "YuGothic" , "ヒラギノ角ゴ Pro W3" , "Hiragino Kaku Gothic Pro" , "Meiryo UI" , "メイリオ" , Meiryo , Osaka , "ＭＳ Ｐゴシック" , "MS PGothic" , sans-serif;
+font-style: inherit;
+margin: 0;
+outline: 0;
+padding: 0;
+vertical-align: baseline;
+word-break: normal;
+word-wrap: break-word;
+}
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,address {display: block;}
+audio,canvas,video {display: inline-block; max-width: 100%;}
+html {overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;}
+body {background: #ffffff;}
+a {text-decoration: none; overflow:hidden; outline:none;}
+a:hover{text-decoration:none;}
+a.tdn:hover{text-decoration:none;}
+a:focus {outline:none;}
+a:hover, a:active {outline: 0;}
+h1,h2,h3,h4,h5,h6 {margin: 0; padding:0; line-height:1.4;}
+h1 {font-size: 22px; font-size:2.2rem;}
+h2 {font-size: 20px; font-size:2rem;}
+h3 {font-size: 18px; font-size:1.8rem;}
+h4,h5,h6 {font-size: 16px; font-size:1.6rem;}
+address {font-style: normal;}
+abbr[title] {border-bottom: 1px dotted #2b2b2b;cursor: help;}
+b,strong {font-weight: 700;}
+cite,dfn,em,i {font-style: italic;}
+mark,ins {background: #fff9c0;text-decoration: none;}
+p {font-size:13px; font-size:1.3rem; line-height:1.7; margin-bottom:14px; overflow-wrap: break-word;}
+code,kbd,tt,var,samp,pre {font-family: monospace, serif;font-size: 15px;-webkit-hyphens: none;-moz-hyphens:    none;-ms-hyphens:     none;hyphens:none;line-height: 1.6;}
+pre {
+border: 1px solid rgba(0, 0, 0, 0.1);
+-webkit-box-sizing: border-box;
+-moz-box-sizing:    border-box;
+box-sizing:         border-box;
+margin-bottom: 24px;
+max-width: 100%;
+overflow: auto;
+padding: 12px;
+white-space: pre;
+white-space: pre-wrap;
+word-wrap: break-word;
+}
+blockquote,q {
+-webkit-hyphens: none;
+-moz-hyphens: none;
+-ms-hyphens: none;
+hyphens: none;
+quotes: none;
+}
+blockquote:before,blockquote:after,q:before,q:after {content: "";content: none;}
+blockquote {color: #767676;font-size: 19px;font-style: italic;font-weight: 300;line-height: 1.2631578947;margin-bottom: 24px; padding:24px; border-radius:6px; background:#f5f5f5;}
+#entry .entry-inner blockquote p:last-child{margin-bottom:0;}
+blockquote cite,blockquote small {color: #2b2b2b;font-size: 16px;font-weight: 400;line-height: 1.5;}
+blockquote em,blockquote i,blockquote cite {font-style: normal;}
+blockquote strong,blockquote b {font-weight: 400;}
+small {font-size: smaller;}
+big {font-size: 125%;}
+sup,sub {font-size: 75%;height: 0;line-height: 0;position: relative;vertical-align: baseline;}
+sup {bottom: 1ex;}
+sub {top: .5ex;}
+dl {margin-bottom: 0;}
+dt {font-weight: bold;}
+dd {margin-bottom: 0;}
+ul,ol {list-style: none;margin:0;}
+img {-ms-interpolation-mode: bicubic;border: 0;}
+figure {margin: 0;}
+fieldset {border: 1px solid rgba(0, 0, 0, 0.1);margin: 0 0 24px;padding: 11px 12px 0;}
+legend {white-space: normal;}
+button,input,select,textarea {
+-webkit-box-sizing: border-box;
+-moz-box-sizing:    border-box;
+box-sizing:         border-box;
+font-size: 100%;
+margin: 0;
+max-width: 100%;
+vertical-align: baseline;
+}
+button,input {line-height: normal;}
+input,textarea {background-image: -webkit-linear-gradient(hsla(0,0%,100%,0), hsla(0,0%,100%,0)); /* Removing the inner shadow, rounded corners on iOS inputs */}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {-webkit-appearance: button;cursor: pointer;}
+button[disabled],input[disabled] {cursor: default;}
+input[type="checkbox"],input[type="radio"] {padding: 0;}
+input[type="search"] {-webkit-appearance: textfield;}
+input[type="search"]::-webkit-search-decoration {-webkit-appearance: none;}
+button::-moz-focus-inner,input::-moz-focus-inner {border: 0;padding: 0;}
+textarea {overflow: auto;vertical-align: top;}
+table,th,td {border: 1px solid rgba(0, 0, 0, 0.1);}
+table {border-collapse: collapse;border-spacing: 0;border-width: 1px 0 0 1px;margin-bottom: 24px;width: 100%;}
+caption,th,td {font-weight: normal;text-align: left;}
+th {border-width: 0 1px 1px 0; font-weight: bold;}
+td {border-width: 0 1px 1px 0;}
+del {color: #767676;}
+hr {background-color: rgba(0, 0, 0, 0.1);border: 0;height: 1px;}
+.fix-img{max-width:100%; height:auto;}
+.mn{margin-bottom:0;}
+
+/*---------------------------
+Clearfix
+----------------------------*/
+.clearfix:after {
+    content: " ";  
+    display: block; 
+    visibility: hidden; 
+    clear: both; 
+    height: 0.1px; 
+    font-size: 0.1em; 
+    line-height: 0; 
+}
+.clearfix {
+    min-height:1px;
+    zoom:1;
+}
+* html .clearfix {
+    height:1px; 
+}
+
+@media screen and (min-width: 641px) {
+    html,body{width: 100%; min-width:1220px;}
+}
+
+@media screen and (max-width: 640px) {
+    body {font-size:13px; font-size:1.3rem;}
+    div,p,ul,ol,li,table,tr,th,td,a,span,article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,address {font-size:13px; font-size:1.3rem;}
+    blockquote{padding:6%;}
+    a, span {font-size:1em;}
+    h1 {font-size: 22px; font-size:2.2rem;}
+    h2 {font-size: 20px; font-size:2rem;}
+    h3 {font-size: 18px; font-size:1.8rem;}
+    h4,h5,h6 {font-size: 18px; font-size:1.8rem;}
+    p {font-size:13px; font-size:1.3rem; line-height:1.7; margin-bottom:3.6%; overflow-wrap: break-word;}
+}
+
+
+#photo-wall {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .photo {
+    width: calc(33.33% - 20px);
+    max-height: 200px;
+    width: auto;
+    height: auto;
+    margin: 10px;
+  }
+
+  .delete-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .modify-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }

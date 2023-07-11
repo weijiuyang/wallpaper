@@ -1,0 +1,17 @@
+.pagination {
+	white-space: nowrap; /* 防止换行 */
+  }
+  
+  .pagination a {
+	display: inline-block;
+	padding: 8px 16px;
+	text-decoration: none;
+	color: #333;
+	border: 1px solid #ddd;
+  }
+  
+  .pagination a.active {
+	background-color: #4caf50;
+	color: #fff;
+	border: 1px solid #4caf50;
+  }

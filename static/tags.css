@@ -1,0 +1,39 @@
+.article-tags {
+    margin-bottom: 20px
+}
+
+.article-tags a {
+    display: inline-block;
+    margin-bottom: 3px;
+    padding: 7px 10px;
+    line-height: 1;
+    font-size: 12px;
+    border-radius: 3px;
+    margin-right: 5px;
+    color: #fff !important;
+    background-color: var(--theme-color)
+}
+
+.article-tags a:hover {
+    opacity: .8;
+}
+
+.article-tags a:nth-child(5n) {
+    background-color: #4A4A4A
+}
+
+.article-tags a:nth-child(5n + 1) {
+    background-color: #ff5e5c
+}
+
+.article-tags a:nth-child(5n + 2) {
+    background-color: #ffbb50
+}
+
+.article-tags a:nth-child(5n + 3) {
+    background-color: #1ac756
+}
+
+.article-tags a:nth-child(5n + 4) {
+    background-color: #19B5FE
+}
